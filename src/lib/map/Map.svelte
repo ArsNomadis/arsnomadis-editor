@@ -1,16 +1,16 @@
 <script>
     import Leaflet from './Leaflet.svelte'
     import Circle from './Circle.svelte'
-    import { project } from '../../stores/stores.js'
+    import { project } from '../../stores/projectStore.js'
 
     let map
-    const initialView = [ 48.107878, -1.651773 ]
-    const circles = []
+    const initialView = $project.initialLocation
 
     const defaultCircleOptions = {
         stroke: false,
         color: 'red',
         bubblingMouseEvents: false,
+        radius: 40,
     }
 
     function resizeMap() {
@@ -26,7 +26,7 @@
     function handleMapClick(event) {
         project.addZone({
             latLng: [event.detail.latlng.lat, event.detail.latlng.lng],
-            radius: 20,
+            radius: defaultCircleOptions.radius,
         })
     }
 </script>
@@ -34,9 +34,9 @@
 <svelte:window on:resize={resizeMap} />
 
 <div>
-    <Leaflet bind:map view={$project.initialLocation} zoom={18} on:click={handleMapClick}>
+    <Leaflet bind:map view={initialView} zoom={18} on:click={handleMapClick}>
         {#each $project.zones as zone}
-            <Circle latLng={zone.location} on:click={handleCircleClick} />
+            <Circle latLng={zone.location} options={defaultCircleOptions} on:click={handleCircleClick} />
         {/each}
     </Leaflet>
 </div>

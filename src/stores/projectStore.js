@@ -10,6 +10,7 @@ function createProject() {
 
     return {
         subscribe,
+        set,
         addZone: (zone) => update((p) => {
             p.zones.push({
                 uuid: crypto.randomUUID(),
@@ -20,11 +21,15 @@ function createProject() {
                 loop: false,
                 conditions: [],
             })
+
+            return p
         }),
         removeZoneByID: (zone) => update((p) => {
             p.zones = p.zones.filter((z) => {
                 return z.uuid !== zone.uuid;
             });
+
+            return p
         }),
     }
 }
