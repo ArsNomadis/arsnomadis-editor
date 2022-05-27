@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import Inspector from '$lib/inspector/Inspector.svelte'
+    import Map from '$lib/map/Map.svelte'
+</script>
+
+<Map/>
+<Inspector/>
+
+<style>
+    :global(body) {
+        position: relative;
+        margin: 0%;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+</style>
+
+
