@@ -1,6 +1,6 @@
 # Ars Nomadis Editor
 
-[Work In Progress] Web editor for [Ars Nomadis](https://www.arsnomadis.eu/) geolocated soundwalks. The editor generates a JSON file  to be used with Ars Nomadis custom hardware. The application is based on the [SvelteKit](https://kit.svelte.dev/) framework and uses [Leaflet](https://leafletjs.com/) for the interactive map features.
+**[Work In Progress]** Web editor for [Ars Nomadis](https://www.arsnomadis.eu/) geolocated soundwalks. The editor generates a JSON file to be used with Ars Nomadis custom hardware. The application is based on the [SvelteKit](https://kit.svelte.dev/) framework and uses [Leaflet](https://leafletjs.com/) & [OpenStreetMap](https://www.openstreetmap.org/) for the interactive map features.
 
 ## Installing
 
