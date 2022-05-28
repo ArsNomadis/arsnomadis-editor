@@ -1,22 +1,23 @@
-# create-svelte
+# Ars Nomadis Editor
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[Work In Progress] Web editor for [Ars Nomadis](https://www.arsnomadis.eu/) soundwalks. This editor generates a JSON file  to be used with Ars Nomadis custom hardware.
 
-## Creating a project
+## Installing
 
-If you're seeing this, you've probably already done this step. Congrats!
+The installation requires [Nodejs](https://nodejs.org/en/) 14 or newer. The recommended version is the current LTS (16.15.0).
 
 ```bash
-# create a new project in the current directory
-npm init svelte
+# Clone this repository
+git clone ssh://git@denez.ni-vps.fr:2222/denezth/arsnomadis-editor.git
 
-# create a new project in my-app
-npm init svelte my-app
+# Navigate to the project
+cd arsnomadis-editor
+
+# Install dependencies
+npm install
 ```
 
 ## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -27,12 +28,10 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+You can preview the production build with `npm run preview -- --open`.
