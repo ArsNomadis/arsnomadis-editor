@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"leaflet": "^1.8.0"
+		"leaflet": "^1.8.0",
+		"svelte-material-icons": "^2.0.2"
 	}
 }

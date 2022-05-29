@@ -1,4 +1,12 @@
+<script>
+    import { project } from '../../stores/projectStore.js'
+    import Sound from "./Sound.svelte";
+</script>
+
 <div>
+    {#each $project.sounds as sound}
+        <Sound uuid={sound.uuid}/>
+    {/each}
 </div>
 
 <style>
@@ -13,5 +21,6 @@
         height: auto;
         border-radius: 0.8rem;
         box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
     }
 </style>
