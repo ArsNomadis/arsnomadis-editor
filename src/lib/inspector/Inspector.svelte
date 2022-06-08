@@ -1,11 +1,17 @@
 <script>
     import { project } from '../../stores/projectStore.js'
     import Sound from "./Sound.svelte";
+
+    let div
+
+    function scrollTo(position) {
+        div.scrollTop = position.detail
+    }
 </script>
 
-<div>
+<div bind:this={div}>
     {#each $project.sounds as sound}
-        <Sound uuid={sound.uuid}/>
+        <Sound id={sound.uuid} on:shouldScroll={scrollTo}/>
     {/each}
 </div>
 
@@ -22,5 +28,6 @@
         border-radius: 0.8rem;
         box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
         overflow: hidden;
+        overflow-y: scroll;
     }
 </style>

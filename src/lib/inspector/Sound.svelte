@@ -1,16 +1,24 @@
 <script>
     import { selectedSound } from '../../stores/projectStore.js'
     import { slide } from 'svelte/transition'
+    import { createEventDispatcher } from 'svelte'
 
-    export let uuid = ''
+    export let id = ''
 
     let selected = false
+    let div
     
-    $: selected = (uuid && $selectedSound === uuid)
+    $: selected = (id && $selectedSound === id)
+
+    const dispatch = createEventDispatcher()
+
+    $: if (selected) {
+        dispatch('shouldScroll', (div.offsetTop - 8))    
+    }
 </script>
 
-<div class="entry" class:selected on:click="{() => { $selectedSound = uuid }}">
-    {uuid}
+<div class="entry" class:selected bind:this={div} on:click="{() => { $selectedSound = id }}">
+    {id}
 </div>
 
 {#if selected}
