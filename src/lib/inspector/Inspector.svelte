@@ -1,6 +1,6 @@
 <script>
     import { project } from '../../stores/projectStore.js'
-    import Sound from "./Sound.svelte";
+    import Zone from "./Zone.svelte";
 
     let div
 
@@ -10,8 +10,8 @@
 </script>
 
 <div bind:this={div}>
-    {#each $project.sounds as sound}
-        <Sound id={sound.uuid} on:shouldScroll={scrollTo}/>
+    {#each $project.zones as zone}
+        <Zone id={zone.uuid} on:shouldScroll={scrollTo}/>
     {/each}
 </div>
 

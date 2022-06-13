@@ -1,7 +1,7 @@
 <script>
     import Leaflet from './Leaflet.svelte'
     import Circle from './Circle.svelte'
-    import { project, selectedSound } from '../../stores/projectStore.js'
+    import { project, selectedZone } from '../../stores/projectStore.js'
 
     let map
     const initialView = $project.initialLocation
@@ -19,17 +19,17 @@
         }
     }
 
-    function handleCircleClick(sound) {
-        $selectedSound = sound.uuid
+    function handleCircleClick(zone) {
+        $selectedZone = zone.uuid
     }
 
     function handleMapClick(event) {
-        project.addSound({
+        project.addZone({
             latLng: [event.detail.latlng.lat, event.detail.latlng.lng],
             radius: defaultCircleOptions.radius,
         })
 
-        $selectedSound = null
+        $selectedZone = null
     }
 </script>
 
@@ -37,11 +37,11 @@
 
 <div>
     <Leaflet bind:map view={initialView} zoom={18} on:click={handleMapClick}>
-        {#each $project.sounds as sound}
+        {#each $project.zones as zone}
             <Circle
-                latLng={sound.location}
+                latLng={zone.location}
                 options={defaultCircleOptions}
-                on:click={() => handleCircleClick(sound)}
+                on:click={() => handleCircleClick(zone)}
             />
         {/each}
     </Leaflet>

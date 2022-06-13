@@ -1,5 +1,5 @@
 <script>
-    import { selectedSound } from '../../stores/projectStore.js'
+    import { project, selectedZone } from '../../stores/projectStore.js'
     import { slide } from 'svelte/transition'
     import { createEventDispatcher } from 'svelte'
 
@@ -7,18 +7,19 @@
 
     let selected = false
     let div
+    let name = ''
     
-    $: selected = (id && $selectedSound === id)
+    $: selected = (id && $selectedZone === id)
 
     const dispatch = createEventDispatcher()
 
     $: if (selected) {
-        dispatch('shouldScroll', (div.offsetTop - 8))    
+        dispatch('shouldScroll', (div.offsetTop - 8))
     }
 </script>
 
-<div class="entry" class:selected bind:this={div} on:click="{() => { $selectedSound = id }}">
-    {id}
+<div class="entry" class:selected bind:this={div} on:click="{() => { $selectedZone = id }}">
+    <input bind:value={name} placeholder="Untitled">
 </div>
 
 {#if selected}
@@ -32,6 +33,7 @@
         background-color: white;
         margin: 8px;
         padding-left: 12px;
+        padding-right: 12px;
         border-radius: 8px;
     }
 
@@ -42,6 +44,12 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: small;
         box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+    input {
+        border-style: none;
+        width: 100%;
+        outline: none;
     }
 
     .settings {

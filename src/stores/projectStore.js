@@ -5,28 +5,26 @@ function createProject() {
         uuid: crypto.randomUUID(),
         name: 'Untitled',
         initialLocation: [ 48.107878, -1.651773 ],
-        sounds: [],
+        zones: [],
     })
 
     return {
         subscribe,
         set,
-        addSound: (sound) => update((p) => {
-            p.sounds.push({
+        addZone: (zone) => update((p) => {
+            p.zones.push({
                 uuid: crypto.randomUUID(),
                 name: 'Untitled',
-                location: sound.latLng,
-                radius: sound.radius,
-                filename: '',
-                loop: false,
-                conditions: [],
+                location: zone.latLng,
+                radius: zone.radius,
+                sounds: [],
             })
 
             return p
         }),
-        removeSoundByID: (sound) => update((p) => {
-            p.sounds = p.sounds.filter((s) => {
-                return s.uuid !== sound.uuid;
+        removeZoneByID: (zone) => update((p) => {
+            p.zones = p.zones.filter((s) => {
+                return s.uuid !== zone.uuid;
             });
 
             return p
@@ -34,5 +32,5 @@ function createProject() {
     }
 }
 
-export const selectedSound = writable()
+export const selectedZone = writable()
 export const project = createProject()
