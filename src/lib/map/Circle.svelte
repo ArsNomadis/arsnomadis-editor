@@ -7,6 +7,7 @@
     export let circle = undefined
 
     export let latLng
+    export let radius
     export let options
 
     let L
@@ -22,7 +23,7 @@
     setContext('layer', () => circle)
       
     function createCircle() {
-        circle = L.circle(latLng, options)
+        circle = L.circle(latLng, { ...options, radius })
         .on('click', (e) => { 
             dispatch('click', e)
             L.DomEvent.stopPropagation(e)
@@ -38,6 +39,18 @@
                     circle = undefined
                 }
             },
+        }
+    }
+
+    $: {
+        if (circle) {
+            circle.setRadius(radius)
+        }
+    }
+
+    $: {
+        if (circle) {
+            circle.setLatLng(latLng)
         }
     }
 </script>

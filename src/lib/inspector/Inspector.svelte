@@ -10,8 +10,8 @@
 </script>
 
 <div bind:this={div}>
-    {#each $project.zones as zone}
-        <Zone id={zone.uuid} on:shouldScroll={scrollTo}/>
+    {#each $project.zones as zone, i (zone.uuid)}
+        <Zone id={i} on:shouldScroll={scrollTo}/>
     {/each}
 </div>
 

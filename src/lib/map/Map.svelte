@@ -5,12 +5,12 @@
 
     let map
     const initialView = $project.initialLocation
+    const defaultRadius = 40
 
     const defaultCircleOptions = {
         stroke: false,
         color: 'red',
         bubblingMouseEvents: false,
-        radius: 40,
     }
 
     function resizeMap() {
@@ -19,14 +19,14 @@
         }
     }
 
-    function handleCircleClick(zone) {
-        $selectedZone = zone.uuid
+    function handleCircleClick(index) {
+        $selectedZone = index
     }
 
     function handleMapClick(event) {
         project.addZone({
             latLng: [event.detail.latlng.lat, event.detail.latlng.lng],
-            radius: defaultCircleOptions.radius,
+            radius: defaultRadius,
         })
 
         $selectedZone = null
@@ -37,11 +37,12 @@
 
 <div>
     <Leaflet bind:map view={initialView} zoom={18} on:click={handleMapClick}>
-        {#each $project.zones as zone}
+        {#each $project.zones as zone, i (zone.uuid)}
             <Circle
                 latLng={zone.location}
+                radius={zone.radius}
                 options={defaultCircleOptions}
-                on:click={() => handleCircleClick(zone)}
+                on:click={() => handleCircleClick(i)}
             />
         {/each}
     </Leaflet>

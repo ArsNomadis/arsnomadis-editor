@@ -2,6 +2,7 @@
     import { project, selectedZone } from '../../stores/projectStore.js'
     import { slide } from 'svelte/transition'
     import { createEventDispatcher } from 'svelte'
+    import ZoneSettings from './ZoneSettings.svelte'
 
     export let id = ''
 
@@ -9,7 +10,11 @@
     let div
     let name = ''
     
-    $: selected = (id && $selectedZone === id)
+    $: selected = ($selectedZone === id)
+    
+    $: if ($selectedZone === id) {
+        $project.zones[$selectedZone].name = name
+    }
 
     const dispatch = createEventDispatcher()
 
@@ -18,12 +23,13 @@
     }
 </script>
 
-<div class="entry" class:selected bind:this={div} on:click="{() => { $selectedZone = id }}">
+<div class="entry" bind:this={div} on:click="{() => { $selectedZone = id }}">
     <input bind:value={name} placeholder="Untitled">
 </div>
 
 {#if selected}
     <div class="settings selected" in:slide>
+        <ZoneSettings />
     </div>
 {/if}
 
@@ -41,8 +47,6 @@
         height: 45px;
         display: flex;
         align-items: center;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: small;
         box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2);
     }
 
@@ -53,12 +57,12 @@
     }
 
     .settings {
-        height: 150px;
+        padding: 6px;
     }
 
     .selected {
         border: 1px;
         border-style: solid;
-        border-color: rgba(255,0,0,0.6);
+        border-color: rgba(0, 0, 0, 0.1);
     }
 </style>
