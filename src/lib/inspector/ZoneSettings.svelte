@@ -1,8 +1,12 @@
 <script>
     import { project, selectedZone } from '../../stores/projectStore.js'
+    import ToggleSwitch from './ToggleSwitch.svelte'
 </script>
 
 <div>
+    <label for="visible"> Visible </label>
+    <ToggleSwitch id="visible" bind:checked={$project.zones[$selectedZone].visible} />
+
     <label for="radius"> Radius </label>
     <input id="radius" type=number bind:value={$project.zones[$selectedZone].radius} min="0">
 
@@ -18,7 +22,7 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-gap: 0.5rem;
-        align-items: baseline;
+        align-items: center;
         height: auto;
         padding: 12px;
         border-radius: 8px;

@@ -39,6 +39,7 @@
     <Leaflet bind:map view={initialView} zoom={18} on:click={handleMapClick}>
         {#each $project.zones as zone, i (zone.uuid)}
             <Circle
+                visible={zone.visible}
                 latLng={zone.location}
                 radius={zone.radius}
                 options={defaultCircleOptions}

@@ -5,7 +5,8 @@
     export { classNames as class }
   
     export let circle = undefined
-
+    
+    export let visible
     export let latLng
     export let radius
     export let options
@@ -55,7 +56,7 @@
     }
 </script>
 
-{#if L}
+{#if L && visible}
     <div use:createCircle class={classNames}>
         {#if circle}
             <slot />

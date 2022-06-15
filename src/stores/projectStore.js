@@ -17,6 +17,7 @@ function createProject() {
                 name: 'Untitled',
                 location: zone.latLng,
                 radius: zone.radius,
+                visible: true,
                 sounds: [],
             })
 
