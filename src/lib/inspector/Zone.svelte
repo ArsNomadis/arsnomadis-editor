@@ -59,10 +59,4 @@
     .settings {
         padding: 6px;
     }
-
-    .selected {
-        border: 1px;
-        border-style: solid;
-        border-color: rgba(0, 0, 0, 0.1);
-    }
 </style>

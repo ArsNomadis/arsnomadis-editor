@@ -17,19 +17,25 @@ function createProject() {
                 name: 'Untitled',
                 location: zone.latLng,
                 radius: zone.radius,
-                visible: true,
+                visible: true, // Ui only (should be removed from export)
                 sounds: [],
             })
 
             return p
         }),
-        removeZoneByID: (zone) => update((p) => {
-            p.zones = p.zones.filter((s) => {
-                return s.uuid !== zone.uuid;
-            });
+        addSound: (zoneIndex) => update((p) => {
+            p.zones[zoneIndex].sounds.push({
+                filename: '',
+                playEvent: 'enter', // 'exit' || 'button'
+                stopEvent: 'exit', // 'none' || 'enter_new_zone'
+                zoneCondition: 'any', // 'never_visited' || 'already_visited'
+                fadein: 0.15,
+                fadeout: 0.15,
+                loop: false,
+            })
 
             return p
-        }),
+        })
     }
 }
 
