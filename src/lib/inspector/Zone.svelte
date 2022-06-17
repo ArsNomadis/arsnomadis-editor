@@ -2,7 +2,9 @@
     import { project, selectedZone } from '../../stores/projectStore.js'
     import { slide } from 'svelte/transition'
     import { createEventDispatcher } from 'svelte'
+    import { warning } from '../../stores/warningStore.js'
     import ZoneSettings from './ZoneSettings.svelte'
+    import Delete from 'svelte-material-icons/Delete.svelte'
 
     export let id = ''
 
@@ -21,10 +23,26 @@
     $: if (selected) {
         dispatch('shouldScroll', (div.offsetTop - 8))
     }
+
+    function warn() {
+        $warning = {
+            message: 'Warning! Deleting this zone is irreversible.',
+            callback: (status) => {
+                if (status === 'ok') {
+                    project.removeZone(id)
+                }
+
+                $warning = null
+            }
+        }
+    }
 </script>
 
 <div class="entry" bind:this={div} on:click="{() => { $selectedZone = id }}">
-    <input bind:value={name} placeholder="Untitled" spellcheck="false">
+    <input bind:value={name} placeholder="Untitled" spellcheck="false" on>
+    <div class="delete" on:click={warn}>
+        <Delete size="1.5rem" color={selected ? 'grey' : 'lightgrey'}/>
+    </div>
 </div>
 
 {#if selected}
@@ -39,7 +57,7 @@
         background-color: white;
         margin: 8px;
         padding-left: 12px;
-        padding-right: 12px;
+        /* padding-right: 12px; */
         border-radius: 8px;
     }
 
@@ -58,5 +76,9 @@
 
     .settings {
         padding: 6px;
+    }
+
+    .delete {
+        display: flex;
     }
 </style>

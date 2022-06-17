@@ -23,6 +23,11 @@ function createProject() {
 
             return p
         }),
+        removeZone: (zoneIndex) => update((p) => {
+            p.zones.splice(zoneIndex, 1)
+
+            return p
+        }),
         addSound: (zoneIndex) => update((p) => {
             p.zones[zoneIndex].sounds.push({
                 filename: '',
@@ -35,7 +40,12 @@ function createProject() {
             })
 
             return p
-        })
+        }),
+        removeSound: (zoneIndex, soundIndex) => update((p) => {
+            p.zones[zoneIndex].sounds.splice(soundIndex, 1)
+
+            return p
+        }),
     }
 }
 

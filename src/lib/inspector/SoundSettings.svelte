@@ -1,8 +1,23 @@
 <script>
     import { project, selectedZone } from '../../stores/projectStore.js'
     import ToggleSwitch from './ToggleSwitch.svelte'
+    import { warning } from '../../stores/warningStore.js'
+    import Delete from 'svelte-material-icons/Delete.svelte'
 
     export let id;
+
+    function warn() {
+        $warning = {
+            message: 'Warning! Deleting this sound is irreversible.',
+            callback: (status) => {
+                if (status === 'ok') {
+                    project.removeSound($selectedZone, id)
+                }
+
+                $warning = null
+            }
+        }
+    }
 </script>
 
 <div class="settings">
@@ -42,6 +57,10 @@
 
         <label for="loop"> Loop </label>
         <ToggleSwitch id="loop" bind:checked={$project.zones[$selectedZone].sounds[id].loop} />
+        
+    </div>
+    <div class="delete" on:click={warn}>
+        <Delete size="1rem" color="rgb(252, 201, 199)"/>
     </div>
 </div>
 
@@ -49,6 +68,7 @@
     .settings {
         display: flex;
         flex-direction: column;
+        justify-content: center;
     }
 
     .parameters {
@@ -61,5 +81,10 @@
         margin-top: 0.5rem;
         border-radius: 8px;
         box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+    }
+
+    .delete {
+        place-self: center;
+        display: flex;
     }
 </style>
