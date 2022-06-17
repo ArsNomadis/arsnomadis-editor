@@ -24,7 +24,7 @@
 </script>
 
 <div class="entry" bind:this={div} on:click="{() => { $selectedZone = id }}">
-    <input bind:value={name} placeholder="Untitled">
+    <input bind:value={name} placeholder="Untitled" spellcheck="false">
 </div>
 
 {#if selected}
