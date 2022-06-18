@@ -8,7 +8,7 @@ The installation requires [Nodejs](https://nodejs.org/en/) 14 or newer. The reco
 
 ```bash
 # Clone this repository
-git clone ssh://git@denez.ni-vps.fr:2222/denezth/arsnomadis-editor.git
+git clone https://gitlab.com/denez/arsnomadis-editor.git
 
 # Navigate to the project
 cd arsnomadis-editor
