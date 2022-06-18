@@ -24,7 +24,7 @@
     <div class="parameters">
         <label for="filename"> Filename </label>
         <input id="filename" bind:value={$project.zones[$selectedZone].sounds[id].filename}
-            placeholder="untitled.ogg"
+            placeholder="untitled.wav"
             spellcheck="false"
         >
 
