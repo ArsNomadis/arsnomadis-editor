@@ -30,7 +30,7 @@
         position: fixed;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(255, 0, 0, 0.2);
+        background-color: rgba(255, 0, 0, 0.05);
     }
 
     .modal {
