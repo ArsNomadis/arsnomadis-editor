@@ -14,6 +14,10 @@
     }
 </script>
 
+<svelte:head>
+	<title>Ars Nomadis Editor</title>
+</svelte:head>
+
 <Map/>
 <Inspector/>
 <ImportButton/>
