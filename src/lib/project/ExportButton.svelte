@@ -25,6 +25,7 @@
         border-radius: 8px;
         width: 80px;
         height: 30px;
+        cursor: pointer;
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     }
 </style>

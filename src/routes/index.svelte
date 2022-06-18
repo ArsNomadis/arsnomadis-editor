@@ -3,6 +3,7 @@
     import Inspector from '$lib/inspector/Inspector.svelte'
     import Map from '$lib/map/Map.svelte'
     import ExportButton from '$lib/project/ExportButton.svelte'
+    import ImportButton from '$lib/project/ImportButton.svelte'
     import WarningModal from '../lib/project/WarningModal.svelte'
     import { warning } from '../stores/warningStore.js'
 
@@ -15,7 +16,8 @@
 
 <Map/>
 <Inspector/>
-<ExportButton />
+<ImportButton/>
+<ExportButton/>
 
 {#if $warning}
     <WarningModal 
