@@ -11,9 +11,9 @@
     let selected = false
     let div
     let name = ''
-    
+
     $: selected = ($selectedZone === id)
-    
+
     $: if ($selectedZone === id) {
         $project.zones[$selectedZone].name = name
     }
@@ -39,7 +39,7 @@
 </script>
 
 <div class="entry" bind:this={div} on:click="{() => { $selectedZone = id }}">
-    <input bind:value={name} placeholder="Untitled" spellcheck="false" on>
+    <input bind:value={name} placeholder="Untitled" spellcheck="false">
     <div class="delete" on:click={warn}>
         <Delete size="1.5rem" color={selected ? 'grey' : 'lightgrey'}/>
     </div>
@@ -57,7 +57,6 @@
         background-color: white;
         margin: 8px;
         padding-left: 12px;
-        /* padding-right: 12px; */
         border-radius: 8px;
     }
 
