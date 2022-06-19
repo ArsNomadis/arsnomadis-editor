@@ -94,5 +94,6 @@
     .delete {
         place-self: center;
         display: flex;
+        cursor: pointer;
     }
 </style>

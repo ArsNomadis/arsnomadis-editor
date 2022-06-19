@@ -55,5 +55,6 @@
 
     button:hover {
         color: rgb(252, 201, 199);
+        cursor: pointer;
     }
 </style>

@@ -79,5 +79,6 @@
 
     .delete {
         display: flex;
+        cursor: pointer;
     }
 </style>
