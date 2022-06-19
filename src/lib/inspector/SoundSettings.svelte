@@ -33,6 +33,14 @@
             <option value="enter"> Enter </option>
             <option value="exit"> Exit </option>
             <option value="button"> Button </option>
+
+            {#if $project.zones[$selectedZone].sounds.length >= 2}
+                {#each $project.zones[$selectedZone].sounds as s}
+                    {#if s.uuid !== $project.zones[$selectedZone].sounds[id].uuid}
+                        <option value={`after_${s.uuid}`}> After {s.filename} </option>
+                    {/if}
+                {/each}
+            {/if}
         </select>
 
         <label for="stop"> Stop Event </label>

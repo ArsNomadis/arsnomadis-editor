@@ -30,8 +30,9 @@ function createProject() {
         }),
         addSound: (zoneIndex) => update((p) => {
             p.zones[zoneIndex].sounds.push({
+                uuid: crypto.randomUUID(),
                 filename: '',
-                playEvent: 'enter', // 'exit' || 'button'
+                playEvent: 'enter', // 'exit' || 'button' || 'after_xxxx'
                 stopEvent: 'exit', // 'none' || 'enter_new_zone'
                 zoneCondition: 'any', // 'never_visited' || 'already_visited'
                 fadein: 0.15,
