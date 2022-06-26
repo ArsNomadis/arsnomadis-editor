@@ -58,4 +58,13 @@
         text-decoration: none;
         color: black;
     }
+
+    @media (max-width: 480px) {
+        .container {
+            width: 100%;
+            top: 40%;
+            height: 60%;
+            margin: auto;
+        }
+    }
 </style>

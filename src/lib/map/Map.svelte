@@ -57,4 +57,10 @@
         left: 0;
         top: 0;
     }
+
+    @media (max-width: 480px) {
+        div {
+            height: calc(40% + 0.8rem);
+        }
+    }
 </style>

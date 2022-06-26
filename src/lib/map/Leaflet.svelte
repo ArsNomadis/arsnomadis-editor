@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher, onMount, setContext } from 'svelte'
+    import { useMediaQuery } from '../../stores/useMediaQueryStore';
     import 'leaflet/dist/leaflet.css'    
 
     export let height = '100%'
@@ -8,6 +9,7 @@
     export let zoom = undefined
 
     let L
+    let mobileView
 
     let mapProp = undefined
     export { mapProp as map }
@@ -27,6 +29,8 @@
     onMount(async () => {
         const leaflet = await import('leaflet')
         L = leaflet.default
+
+        mobileView = useMediaQuery('(max-width: 480px)')
     })
 
     function createLeaflet(node) {
@@ -54,6 +58,10 @@
       
     $: if (map) {
         map.setView(view, zoom)
+    }
+
+    $: if (map) {
+        map.attributionControl.setPosition(($mobileView ? 'topright' : 'bottomright'))
     }
 </script>
 
