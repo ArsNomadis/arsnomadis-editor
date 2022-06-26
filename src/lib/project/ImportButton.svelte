@@ -35,15 +35,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: fixed;
         cursor: pointer;
-        bottom: 18px;
-        left: 108px;
         background-color: white;
         border-style: none;
         border-radius: 8px;
         width: 80px;
         height: 30px;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     }
 </style>
