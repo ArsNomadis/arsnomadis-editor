@@ -8,6 +8,7 @@
     export let zoom = undefined
 
     let L
+    let mobileView
 
     let mapProp = undefined
     export { mapProp as map }
