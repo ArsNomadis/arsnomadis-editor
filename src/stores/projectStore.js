@@ -14,7 +14,7 @@ function createProject() {
         addZone: (zone) => update((p) => {
             p.zones.push({
                 uuid: crypto.randomUUID(),
-                name: 'Untitled',
+                name: '',
                 location: zone.latLng,
                 radius: zone.radius,
                 visible: true, // Ui only (should be removed from export)

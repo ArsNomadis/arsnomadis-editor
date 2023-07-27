@@ -15,7 +15,7 @@
     }
 </script>
 
-
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="background" on:click={handleCancel}/>
 <div in:fade class="modal">
     <p>{message}</p>

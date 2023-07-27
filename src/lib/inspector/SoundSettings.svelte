@@ -67,6 +67,7 @@
         <ToggleSwitch id="loop" bind:checked={$project.zones[$selectedZone].sounds[id].loop} />
         
     </div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="delete" on:click={warn}>
         <Delete size="1rem" color="rgb(252, 201, 199)"/>
     </div>
