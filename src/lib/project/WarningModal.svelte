@@ -28,8 +28,10 @@
 <style>
     .background {
         position: fixed;
-        width: 100vw;
-        height: 100vh;
+        top: -18px;
+        left: -18px;
+        right: -18px;
+        bottom: -18px;
         background-color: rgba(255, 0, 0, 0.05);
     }
 
