@@ -1,4 +1,5 @@
 <script>
+    import { mouse } from '../../stores/mouseStore'
     import { createEventDispatcher, onMount, setContext } from 'svelte'
     import 'leaflet/dist/leaflet.css'    
 
@@ -55,6 +56,12 @@
       
     $: if (map) {
         map.setView(view, zoom)
+    }
+
+    $: if (map) {
+        map.on('mousemove', (e) => {
+            $mouse = [e.latlng.lat, e.latlng.lng]
+        })
     }
 </script>
 

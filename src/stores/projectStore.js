@@ -28,6 +28,11 @@ function createProject() {
 
             return p
         }),
+        moveZone: (zoneIndex, pos) => update((p) => {
+            p.zones[zoneIndex].location = pos
+
+            return p
+        }),
         addSound: (zoneIndex) => update((p) => {
             p.zones[zoneIndex].sounds.push({
                 uuid: crypto.randomUUID(),

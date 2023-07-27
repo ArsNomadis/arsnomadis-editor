@@ -10,6 +10,11 @@
     const defaultCircleOptions = {
         stroke: false,
         color: 'red',
+
+        /**
+         * @note this doesn't seem to be working as expected: stopPropagation() is
+         * still needed on mouse events.
+         */
         bubblingMouseEvents: false,
     }
 
@@ -20,6 +25,7 @@
     }
 
     function handleCircleClick(index) {
+        map.dragging.disable()
         $selectedZone = index
     }
 
@@ -43,7 +49,8 @@
                 latLng={zone.location}
                 radius={zone.radius}
                 options={defaultCircleOptions}
-                on:click={() => handleCircleClick(i)}
+                on:mousedown={() => handleCircleClick(i)}
+                on:mouseup={() => map.dragging.enable()}
             />
         {/each}
     </Leaflet>
