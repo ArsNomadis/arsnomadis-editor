@@ -15,7 +15,7 @@
     }
 </script>
 
-
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="background" on:click={handleCancel}/>
 <div in:fade class="modal">
     <p>{message}</p>
@@ -28,8 +28,10 @@
 <style>
     .background {
         position: fixed;
-        width: 100vw;
-        height: 100vh;
+        top: -18px;
+        left: -18px;
+        right: -18px;
+        bottom: -18px;
         background-color: rgba(255, 0, 0, 0.05);
     }
 

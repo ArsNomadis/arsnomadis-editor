@@ -10,13 +10,8 @@
 
     let selected = false
     let div
-    let name = ''
 
     $: selected = ($selectedZone === id)
-
-    $: if ($selectedZone === id) {
-        $project.zones[$selectedZone].name = name
-    }
 
     const dispatch = createEventDispatcher()
 
@@ -38,8 +33,14 @@
     }
 </script>
 
-<div class="entry" bind:this={div} on:click="{() => { $selectedZone = id }}">
-    <input bind:value={name} placeholder="Untitled" spellcheck="false">
+<div
+    class="entry"
+    bind:this={div}
+    on:click="{() => { $selectedZone = id }}"
+    on:keypress="{() => { $selectedZone = id }}"
+>
+    <input bind:value={$project.zones[id].name} placeholder="Untitled" spellcheck="false">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="delete" on:click={warn}>
         <Delete size="1.5rem" color={selected ? 'grey' : 'lightgrey'}/>
     </div>

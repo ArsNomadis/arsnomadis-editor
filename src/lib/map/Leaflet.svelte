@@ -1,4 +1,5 @@
 <script>
+    import { mouse } from '../../stores/mouseStore'
     import { createEventDispatcher, onMount, setContext } from 'svelte'
     import 'leaflet/dist/leaflet.css'    
 
@@ -8,7 +9,6 @@
     export let zoom = undefined
 
     let L
-    let mobileView
 
     let mapProp = undefined
     export { mapProp as map }
@@ -28,6 +28,9 @@
     onMount(async () => {
         const leaflet = await import('leaflet')
         L = leaflet.default
+
+        // Prevents Control+click from opening contextmenu (used for resizing circles)
+        document.addEventListener('contextmenu', (e) => e.preventDefault())
     })
 
     function createLeaflet(node) {
@@ -55,6 +58,12 @@
       
     $: if (map) {
         map.setView(view, zoom)
+    }
+
+    $: if (map) {
+        map.on('mousemove', (e) => {
+            $mouse = [e.latlng.lat, e.latlng.lng]
+        })
     }
 </script>
 

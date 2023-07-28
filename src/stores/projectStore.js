@@ -14,7 +14,7 @@ function createProject() {
         addZone: (zone) => update((p) => {
             p.zones.push({
                 uuid: crypto.randomUUID(),
-                name: 'Untitled',
+                name: '',
                 location: zone.latLng,
                 radius: zone.radius,
                 visible: true, // Ui only (should be removed from export)
@@ -25,6 +25,11 @@ function createProject() {
         }),
         removeZone: (zoneIndex) => update((p) => {
             p.zones.splice(zoneIndex, 1)
+
+            return p
+        }),
+        moveZone: (zoneIndex, pos) => update((p) => {
+            p.zones[zoneIndex].location = pos
 
             return p
         }),
