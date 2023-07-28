@@ -4,6 +4,7 @@
     import { mouse } from '../../stores/mouseStore.js'
   
     export let circle = undefined
+    export let id
     export let visible
     export let latLng
     export let radius
@@ -68,17 +69,25 @@
     }
 
     function onMouseover(e) {
-        circle.setStyle({ fillOpacity: 0.6 })
+        focus()
 
         L.DomEvent.on(document, 'keydown', handleControlKeydown)
         L.DomEvent.on(document, 'keyup', handleControlKeyup)
     }
 
     function onMouseout(e) {
-        circle.setStyle({ fillOpacity: 0.2 })
+        if ($selectedZone !== id) unfocus()
 
         L.DomEvent.off(document, 'keydown', handleControlKeydown)
         L.DomEvent.off(document, 'keyup', handleControlKeyup)
+    }
+
+    function focus() {
+        circle.setStyle({ fillOpacity: 0.6 })
+    }
+
+    function unfocus() {
+        circle.setStyle({ fillOpacity: 0.2 })
     }
 
     function createCircle() {
@@ -123,6 +132,15 @@
 
         // Resizes using the distance between the center of the circle and the mouse with a 5m min.
         $project.zones[$selectedZone].radius = (centerLocation.distanceTo(mouseLocation) + 5).toFixed(2)
+    }
+
+    // Highlights the zone even when selected from the inspector.
+    $: if (L && circle) {
+        if ($selectedZone === id) {
+            focus()
+        } else {
+            unfocus()
+        }
     }
 </script>
 
