@@ -9,7 +9,6 @@
     export let zoom = undefined
 
     let L
-    let mobileView
 
     let mapProp = undefined
     export { mapProp as map }
@@ -29,6 +28,9 @@
     onMount(async () => {
         const leaflet = await import('leaflet')
         L = leaflet.default
+
+        // Prevents Control+click from opening contextmenu (used for resizing circles)
+        document.addEventListener('contextmenu', (e) => e.preventDefault())
     })
 
     function createLeaflet(node) {
