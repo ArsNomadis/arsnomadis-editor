@@ -4,7 +4,7 @@
 
 ## Installing
 
-The installation requires [Nodejs](https://nodejs.org/en/) 14 or newer. The recommended version is the current LTS (16.15.0).
+The installation requires [Nodejs](https://nodejs.org/en/) 14 or newer. The recommended version is the current LTS (18.17.0).
 
 ```bash
 # Clone this repository

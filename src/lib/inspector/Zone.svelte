@@ -35,13 +35,15 @@
 
 <div
     class="entry"
+    tabindex="0"
+    role="button"
     bind:this={div}
     on:click="{() => { $selectedZone = id }}"
     on:keypress="{() => { $selectedZone = id }}"
 >
     <input bind:value={$project.zones[id].name} placeholder="Untitled" spellcheck="false">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="delete" on:click={warn}>
+    <div class="delete"tabindex="0" role="button" on:click={warn}>
         <Delete size="1.5rem" color={selected ? 'grey' : 'lightgrey'}/>
     </div>
 </div>

@@ -68,7 +68,7 @@
         
     </div>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="delete" on:click={warn}>
+    <div class="delete" on:click={warn} tabindex="0" role="button">
         <Delete size="1rem" color="rgb(252, 201, 199)"/>
     </div>
 </div>
