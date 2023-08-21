@@ -5,7 +5,7 @@
         const file = event.target.files[0]
 
         importFile(file).then((data) => {
-            $project = data
+            project.set(data)
         }).catch((err) => {
             console.error('Failed to load JSON data with err', err)
         })

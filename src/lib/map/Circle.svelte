@@ -57,13 +57,13 @@
     }
 
     function handleControlKeydown(e) {
-        if (e.key === 'Control') {
+        if (e.key === 'Control' && circle) {
             L.DomUtil.addClass(circle._path, 'resize')
         }
     }
 
     function handleControlKeyup(e) {
-        if (e.key === 'Control') {
+        if (e.key === 'Control' && circle) {
             L.DomUtil.removeClass(circle._path, 'resize')
         }
     }
@@ -119,7 +119,7 @@
 
     $: if (isDragging) {
         if ((posOnMousedown[0] !== $mouse[0] || posOnMousedown[1] !== $mouse[1]) && !isResizing) {
-            if (L) L.DomUtil.addClass(circle._path, 'drag')
+            if (L && circle) L.DomUtil.addClass(circle._path, 'drag')
             latLng = $mouse
         }
     } else {

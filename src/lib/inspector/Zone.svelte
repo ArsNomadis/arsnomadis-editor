@@ -16,7 +16,7 @@
     const dispatch = createEventDispatcher()
 
     $: if (selected) {
-        dispatch('shouldScroll', (div.offsetTop - 8))
+        dispatch('shouldScroll', (div?.offsetTop - 8))
     }
 
     function warn() {
